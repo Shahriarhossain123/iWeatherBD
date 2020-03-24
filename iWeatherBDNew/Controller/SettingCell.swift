@@ -11,6 +11,7 @@ import UIKit
 class SettingCell: UITableViewCell {
     @IBOutlet weak var showImage: UIImageView!
     @IBOutlet weak var ShowLabel: UILabel!
+    @IBOutlet weak var Showtitile: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,5 +23,7 @@ class SettingCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    
 
 }

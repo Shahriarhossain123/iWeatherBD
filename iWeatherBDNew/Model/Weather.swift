@@ -14,12 +14,12 @@ struct Weather:Codable {
     var forecasts : [Forecasts] = []
     
     enum CodingKeys: String, CodingKey {
-
+        
         case location = "location"
         case current_observation = "current_observation"
         case forecasts = "forecasts"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         location = try values.decodeIfPresent(Location.self, forKey: .location)
@@ -36,9 +36,9 @@ struct Location : Codable {
     let lat : Double?
     let long : Double?
     let timezone_id : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case city = "city"
         case region = "region"
         case woeid = "woeid"
@@ -47,7 +47,7 @@ struct Location : Codable {
         case long = "long"
         case timezone_id = "timezone_id"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         city = try values.decodeIfPresent(String.self, forKey: .city)
@@ -58,7 +58,7 @@ struct Location : Codable {
         long = try values.decodeIfPresent(Double.self, forKey: .long)
         timezone_id = try values.decodeIfPresent(String.self, forKey: .timezone_id)
     }
-
+    
 }
 
 struct Current_observation : Codable {
@@ -67,16 +67,16 @@ struct Current_observation : Codable {
     let astronomy : Astronomy?
     let condition : Condition?
     let pubDate : Int?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case wind = "wind"
         case atmosphere = "atmosphere"
         case astronomy = "astronomy"
         case condition = "condition"
         case pubDate = "pubDate"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         wind = try values.decodeIfPresent(Wind.self, forKey: .wind)
@@ -85,46 +85,46 @@ struct Current_observation : Codable {
         condition = try values.decodeIfPresent(Condition.self, forKey: .condition)
         pubDate = try values.decodeIfPresent(Int.self, forKey: .pubDate)
     }
-
+    
 }
 
 struct Wind : Codable {
     let chill : Int?
     let direction : Int?
     let speed : Double?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case chill = "chill"
         case direction = "direction"
         case speed = "speed"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         chill = try values.decodeIfPresent(Int.self, forKey: .chill)
         direction = try values.decodeIfPresent(Int.self, forKey: .direction)
         speed = try values.decodeIfPresent(Double.self, forKey: .speed)
     }
-
+    
 }
 
 struct Astronomy : Codable {
     let sunrise : String?
     let sunset : String?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case sunrise = "sunrise"
         case sunset = "sunset"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         sunrise = try values.decodeIfPresent(String.self, forKey: .sunrise)
         sunset = try values.decodeIfPresent(String.self, forKey: .sunset)
     }
-
+    
 }
 
 struct Atmosphere : Codable {
@@ -132,15 +132,15 @@ struct Atmosphere : Codable {
     let visibility : Double?
     let pressure : Double?
     let rising : Int?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case humidity = "humidity"
         case visibility = "visibility"
         case pressure = "pressure"
         case rising = "rising"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         humidity = try values.decodeIfPresent(Int.self, forKey: .humidity)
@@ -148,28 +148,28 @@ struct Atmosphere : Codable {
         pressure = try values.decodeIfPresent(Double.self, forKey: .pressure)
         rising = try values.decodeIfPresent(Int.self, forKey: .rising)
     }
-
+    
 }
 
 struct Condition : Codable {
     let text : String?
     let code : Int?
     let temperature : Int?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case text = "text"
         case code = "code"
         case temperature = "temperature"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         text = try values.decodeIfPresent(String.self, forKey: .text)
         code = try values.decodeIfPresent(Int.self, forKey: .code)
         temperature = try values.decodeIfPresent(Int.self, forKey: .temperature)
     }
-
+    
 }
 
 struct Forecasts : Codable {
@@ -179,9 +179,9 @@ struct Forecasts : Codable {
     let high : Int?
     let text : String?
     let code : Int?
-
+    
     enum CodingKeys: String, CodingKey {
-
+        
         case day = "day"
         case date = "date"
         case low = "low"
@@ -189,7 +189,7 @@ struct Forecasts : Codable {
         case text = "text"
         case code = "code"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         day = try values.decodeIfPresent(String.self, forKey: .day)
@@ -199,5 +199,5 @@ struct Forecasts : Codable {
         text = try values.decodeIfPresent(String.self, forKey: .text)
         code = try values.decodeIfPresent(Int.self, forKey: .code)
     }
-
+    
 }
